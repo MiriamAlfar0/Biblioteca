@@ -1,0 +1,61 @@
+{{!-- src/views/libros/add.hbs --}}
+
+
+
+<div class="conatiner p-4">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="card text-center">
+                <div class="card-header">
+                    <h3 class="text-uppercase">CREAR NUEVO LIBRO</h3>
+                </div>
+                <div class="card-body">
+                    <form action="/add" method="post">
+
+                        <div class="input-group mt-2">
+                            <label for="titulo" class="input-group-text">TITULO</label>
+                            <input class="form-control" type="text" name="titulo" id="titulo" placeholder="titulo"
+                                autofocus required>
+                        </div>
+
+                        <div class="input-group mt-2">
+                            <label for="autor" class="input-group-text">AUTOR</label>
+                            <input class="form-control" type="text" name="autor" id="lastname" placeholder="autor"
+                                required>
+                        </div>
+
+                        <div class="input-group mt-2">
+                            <label for="fecha_publicacion" class="input-group-text">Fecha de publicación</label>
+                            <input class="form-control" type="date" name="fecha_publicacion" id="fecha_publicacion">
+                        </div>
+
+
+                        <div class="input-group mt-2">
+                            <label class="input-group-text">Disponibilidad</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="disponibilidad"
+                                    id="disponibilidad_si" value="true" required>
+                                <label class="form-check-label" for="disponibilidad_si">Si</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="disponibilidad"
+                                    id="disponibilidad_no" value="false" required>
+                                <label class="form-check-label" for="disponibilidad_no">No</label>
+                            </div>
+                        </div>
+
+
+
+
+
+
+                        <div class="form-group mt-4 d-grid gap-2">
+                            <button class="btn btn-success"> Crear</button>
+                            <a href="/lista" class="btn btn-secondary">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

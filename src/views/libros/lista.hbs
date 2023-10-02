@@ -1,0 +1,41 @@
+<!-- src/views/libros/lista.hbs -->
+
+<div class="container">
+    
+    <div class="row mt-5">
+        <a href="/add" class="btn btn-primary p-2"> crear libro </a>
+        <h3 class="text-center text-uppercase p-2">Lista de libros</h3>
+        {{#if libros}}
+        <div class="row">
+            {{#each libros}}
+            <div class="col-md-4 mb-4">
+                <div class="border rounded p-3">
+                    <h5>{{titulo}}</h5>
+                    <p>Autor: {{autor}}</p>
+                    <p>Fecha de Publicación: {{fecha_publicacion}}</p>
+                    <p>Disponibilidad: {{#if disponibilidad}}si{{else}}si{{/if}}</p>
+                    <div class="btn-group">
+                        <a href="/edit/{{id}}" class="btn btn-warning">
+                            <i class="fa-solid fa-pencil"></i> Editar
+                        </a>
+                        <a href="/delete/{{id}}" class="btn btn-danger">
+                            <i class="fa-solid fa-trash"></i> Eliminar
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        {{else}}
+        <div class="card text-center mx-auto" style="width: 350px;">
+            <div class="card-header">
+                <h3>Debes crear un libro</h3>
+            </div>
+            <div class="card-body">
+                <p>Presiona este botón para crear libros</p>
+                <a href="/add" class="btn btn-primary">Ir a crear</a>
+            </div>
+        </div>
+        {{/if}}
+    </div>
+</div>

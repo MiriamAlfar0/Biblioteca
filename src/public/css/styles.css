@@ -1,0 +1,24 @@
+/* Estilos para el botón de cierre de sesión */
+.cerrar-sesion-btn {
+    float: right; /* Coloca el botón a la derecha */
+    margin-right: 20px; /* Agrega un espacio a la derecha para separarlo del contenido */
+    background-color: red; /* Establece el color de fondo en rojo */
+    color: white; /* Establece el color del texto en blanco */
+    border: none; /* Elimina el borde del botón */
+    padding: 10px 20px; /* Ajusta el espaciado interno del botón */
+    border-radius: 5px; /* Agrega bordes redondeados al botón */
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 20px;
+  }
+  
+  .libro-card {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }

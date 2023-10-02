@@ -1,0 +1,28 @@
+<!-- src/views/reporte.hbs -->
+
+<div class="container">
+    <div class="row mt-5">
+        <h3 class="text-center text-uppercase p-2">Reporte de Libros Disponibles</h3>
+        <table class="table text-center">
+            <thead>
+                <tr class="table-dark">
+                    <th scope="col" class="col-4">Título</th>
+                    <th scope="col">Autor</th>
+                    <th scope="col">Fecha de Publicación</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each libros}}
+                {{#if disponibilidad}}
+                <tr>
+                    <td>{{titulo}}</td>
+                    <td>{{autor}}</td>
+                    <td>{{fecha_publicacion}}</td>
+                </tr>
+                {{/if}}
+                {{/each}}
+            </tbody>
+        </table>
+        <a href="/lista" class="btn btn-secondary">Volver</a>
+    </div>
+</div>
