@@ -1,4 +1,3 @@
-/*  src/database/bd.sql  */
 
 
 CREATE DATABASE Biblioteca
@@ -17,7 +16,7 @@ SELECT * FROM libros;
 
 
 
-
+/* tabla de usuarios*/
 
 CREATE TABLE usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,

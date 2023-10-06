@@ -1,12 +1,12 @@
-/* Estilos para el botón de cierre de sesión */
+
 .cerrar-sesion-btn {
-    float: right; /* Coloca el botón a la derecha */
-    margin-right: 20px; /* Agrega un espacio a la derecha para separarlo del contenido */
-    background-color: red; /* Establece el color de fondo en rojo */
-    color: white; /* Establece el color del texto en blanco */
-    border: none; /* Elimina el borde del botón */
-    padding: 10px 20px; /* Ajusta el espaciado interno del botón */
-    border-radius: 5px; /* Agrega bordes redondeados al botón */
+    float: right; 
+    margin-right: 20px; 
+    background-color: red; 
+    color: white; 
+    border: none; 
+    padding: 10px 20px; 
+    border-radius: 5px; 
 }
 
 .grid-container {
