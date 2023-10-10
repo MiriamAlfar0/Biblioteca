@@ -1,40 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js')
+                .then(function (registration) {
+                    console.log('Service Worker registrado con éxito:', registration);
+                })
+                .catch(function (error) {
+                    console.log('Error al registrar el Service Worker:', error);
+                });
+        }
+    </script>
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/index">
-      <b>Biblioteca</b>
-    </a>
-    <div class="ml-auto">
-        <a class="btn btn-outline-primary btn-sm" href="/lista">Listar</a>
-         <a class="btn btn-outline-primary btn-sm" href="/reporte">Reportes</a>
-    </div>
-</nav>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/index">
+            <b>Biblioteca</b>
+        </a>
+        <div class="ml-auto">
+            <a class="btn btn-outline-primary btn-sm" href="/lista">Listar</a>
+            <a class="btn btn-outline-primary btn-sm" href="/reporte">Reportes</a>
+        </div>
+    </nav>
 
 
-
-
-<main class="mt-5">
-
-
-
-    <div class="container">
-
-
-
-
-        <div class="card mx-auto">
-            <div class="card-header">
-                <img class="card-img-top mx-auto m-2 rounded-circle" src="/img/biblioteca.jpg" alt="logo"
-                    style="width: 150px; height: 150px; display: block;">
-                <h2 class="card-body text-center p-4">BIBLIOTECA</h2>
-            </div>
-            <div class="card-body text-center">
-                <p>"Entre las páginas del conocimiento: Explora el mundo de las letras, la imaginación sin límites y la
-                    sabiduría atemporal en nuestra Biblioteca. Un refugio para la mente y el alma, donde cada libro es
-                    un portal a un universo nuevo. Bienvenido al lugar donde los sueños toman forma y las palabras tejen
-                    historias inolvidables."</p>
-                <a href="/add" class="btn btn-outline-primary btn-sm">Crear libro</a>
+    <main class="mt-5">
+        <div class="container">
+            <div class="card mx-auto">
+                <div class="card-header">
+                    <img class="card-img-top mx-auto m-2 rounded-circle" src="/img/biblioteca.jpg" alt="logo"
+                        style="width: 150px; height: 150px; display: block;">
+                    <h2 class="card-body text-center p-4">BIBLIOTECA</h2>
+                </div>
+                <div class="card-body text-center">
+                    <p>"Entre las páginas del conocimiento: Explora el mundo de las letras, la imaginación sin límites y
+                        la
+                        sabiduría atemporal en nuestra Biblioteca. Un refugio para la mente y el alma, donde cada libro
+                        es
+                        un portal a un universo nuevo. Bienvenido al lugar donde los sueños toman forma y las palabras
+                        tejen
+                        historias inolvidables."</p>
+                    <a href="/add" class="btn btn-outline-primary btn-sm">Crear libro</a>
+                </div>
             </div>
         </div>
-    </div>
-</main>
+    </main>
+</body>
+
+</html>
