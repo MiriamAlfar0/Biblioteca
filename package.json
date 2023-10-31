@@ -16,7 +16,8 @@
     "express-session": "^1.17.3",
     "handlebars": "^4.7.8",
     "morgan": "^1.10.0",
-    "mysql2": "^3.6.1"
+    "mysql2": "^3.6.1",
+    "socket.io": "^4.7.2"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"

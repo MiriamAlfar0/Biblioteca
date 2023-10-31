@@ -52,3 +52,34 @@
         {{/if}}
     </div>
 </div>
+
+<div class="input-group mb-3">
+    <input type="text" id="chatInput" class="form-control" placeholder="Escribe un mensaje...">
+    <div class="input-group-append">
+        <button class="btn btn-primary" onclick="sendMessage()">Enviar</button>
+    </div>
+</div>
+
+<ul id="chatMessages" class="list-group"></ul>
+
+<script src="/socket.io/socket.io.js"></script>
+
+<script>
+    const socket = io(); 
+    const chatInput = document.getElementById('chatInput');
+    
+
+    function sendMessage() {
+        const message = chatInput.value;
+        socket.emit('chat message', message);
+        chatInput.value = '';
+
+      
+        const li = document.createElement('li');
+        li.className = 'list-group-item';
+        li.innerText = message;
+        chatMessages.appendChild(li);
+    }
+ 
+
+</script>
