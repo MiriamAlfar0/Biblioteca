@@ -1,0 +1,26 @@
+#chat-logo {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
+#chat {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: none;
+}
+
+#chat-messages {
+    list-style: none;
+    padding: 0;
+}
+
+#chat-logo img {
+    width: 60px; /* Ajusta el tamaño según tus preferencias */
+    height: 60px; /* Ajusta el tamaño según tus preferencias */
+}

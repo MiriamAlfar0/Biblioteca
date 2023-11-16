@@ -2,59 +2,113 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/service-worker.js')
-                .then(function (registration) {
-                    console.log('Service Worker registrado con éxito:', registration);
-                })
-                .catch(function (error) {
-                    console.log('Error al registrar el Service Worker:', error);
-                });
-        }
-    </script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then(function (registration) {
+          console.log('Service Worker registrado con éxito:', registration);
+        })
+        .catch(function (error) {
+          console.log('Error al registrar el Service Worker:', error);
+        });
+    }
+  </script>
 
+  <link rel="stylesheet" href="/css/chat.css">
 
 </head>
 
 <body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/index">
+        <b>Biblioteca</b>
+      </a>
+      <div class="ml-auto">
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/index">
-            <b>Biblioteca</b>
-        </a>
-        <div class="ml-auto">
-            <a class="btn btn-outline-primary btn-sm" href="/lista">Listar</a>
-            <a class="btn btn-outline-primary btn-sm" href="/reporte">Reportes</a>
+        <form action="/logout" method="POST">
+          <button type="submit" class="btn btn-danger">Cerrar Sesión</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/index">
+      <b>Biblioteca</b>
+    </a>
+    <div class="ml-auto">
+      <a class="btn btn-outline-primary btn-sm" href="/lista">Listar</a>
+      <a class="btn btn-outline-primary btn-sm" href="/reporte">Reportes</a>
+    </div>
+  </nav>
+
+
+  <main class="mt-5">
+    <div class="container">
+      <div class="card mx-auto">
+        <div class="card-header">
+          <img class="card-img-top mx-auto m-2 rounded-circle" src="/img/biblioteca.jpg" alt="logo"
+            style="width: 150px; height: 150px; display: block;">
+          <h2 class="card-body text-center p-4">BIBLIOTECA</h2>
         </div>
-    </nav>
-
-
-    <main class="mt-5">
-        <div class="container">
-            <div class="card mx-auto">
-                <div class="card-header">
-                    <img class="card-img-top mx-auto m-2 rounded-circle" src="/img/biblioteca.jpg" alt="logo"
-                        style="width: 150px; height: 150px; display: block;">
-                    <h2 class="card-body text-center p-4">BIBLIOTECA</h2>
-                </div>
-                <div class="card-body text-center">
-                    <p>"Entre las páginas del conocimiento: Explora el mundo de las letras, la imaginación sin límites y
-                        la
-                        sabiduría atemporal en nuestra Biblioteca. Un refugio para la mente y el alma, donde cada libro
-                        es
-                        un portal a un universo nuevo. Bienvenido al lugar donde los sueños toman forma y las palabras
-                        tejen
-                        historias inolvidables."</p>
-                    <a href="/add" class="btn btn-outline-primary btn-sm">Crear libro</a>
-                </div>
-            </div>
+        <div class="card-body text-center">
+          <p>"Entre las páginas del conocimiento: Explora el mundo de las letras, la imaginación sin límites y
+            la
+            sabiduría atemporal en nuestra Biblioteca. Un refugio para la mente y el alma, donde cada libro
+            es
+            un portal a un universo nuevo. Bienvenido al lugar donde los sueños toman forma y las palabras
+            tejen
+            historias inolvidables."</p>
+          <a href="/add" class="btn btn-outline-primary btn-sm">Crear libro</a>
         </div>
-    </main>
+      </div>
+    </div>
+  </main>
+
+
+
+  <div id="chat-logo" onclick="toggleChat()">
+    <img src="/img/logo2.png" alt="" width="100" height="100">
+  </div>
+
+  <div id="chat" style="display: none;">
+    <ul id="chat-messages"></ul>
+    <input id="chat-input" autocomplete="off" /><button onclick="sendChatMessage()">Enviar</button>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+
+  <script>
+    const socket = io();
+
+    socket.on('user connected', (userId) => {
+      console.log(`Usuario ${userId} conectado`);
+    });
+
+    socket.on('user disconnected', (userId) => {
+      console.log(`Usuario ${userId} desconectado`);
+    });
+
+    socket.on('chat message', ({ userId, msg }) => {
+      $('#chat-messages').append($('<li>').text(`Usuario ${userId}: ${msg}`));
+    });
+
+    function sendChatMessage() {
+      const message = $('#chat-input').val();
+      socket.emit('chat message', message);
+      $('#chat-input').val('');
+    }
+
+    function toggleChat() {
+      $('#chat').toggle();
+    }
+  </script>
 </body>
 
 </html>

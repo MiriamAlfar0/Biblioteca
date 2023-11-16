@@ -1,13 +1,24 @@
-
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/index">
+            <b>Biblioteca</b>
+        </a>
+        <div class="ml-auto">
+            <form action="/logout" method="POST">
+                <button type="submit" class="btn btn-danger">Cerrar Sesión</button>
+            </form>
+        </div>
+    </div>
+</nav>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/index">
-      <b>Biblioteca</b>
+        <b>Biblioteca</b>
     </a>
     <div class="ml-auto">
         <a class="btn btn-outline-primary btn-sm" href="/add">Crear Libro</a>
-          <a class="btn btn-outline-primary btn-sm" href="/reporte">Reportes</a>
-        
+        <a class="btn btn-outline-primary btn-sm" href="/reporte">Reportes</a>
+
     </div>
 </nav>
 
@@ -52,34 +63,3 @@
         {{/if}}
     </div>
 </div>
-
-<div class="input-group mb-3">
-    <input type="text" id="chatInput" class="form-control" placeholder="Escribe un mensaje...">
-    <div class="input-group-append">
-        <button class="btn btn-primary" onclick="sendMessage()">Enviar</button>
-    </div>
-</div>
-
-<ul id="chatMessages" class="list-group"></ul>
-
-<script src="/socket.io/socket.io.js"></script>
-
-<script>
-    const socket = io(); 
-    const chatInput = document.getElementById('chatInput');
-    
-
-    function sendMessage() {
-        const message = chatInput.value;
-        socket.emit('chat message', message);
-        chatInput.value = '';
-
-      
-        const li = document.createElement('li');
-        li.className = 'list-group-item';
-        li.innerText = message;
-        chatMessages.appendChild(li);
-    }
- 
-
-</script>

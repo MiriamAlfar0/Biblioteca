@@ -9,24 +9,33 @@ import librosRoutes from './routes/libros.routes.js';
 import { Server } from 'socket.io';
 
 const app = express();
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const server = http.createServer(app);
 const io = new Server(server);
 
-
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
+const socketToUsername = {};
 
 io.on('connection', (socket) => {
-    console.log('Usuario conectado');
-    
-    socket.on('chat message', (message) => {
-        io.emit('chat message', message);
-    });
+  console.log('Usuario conectado');
 
-    socket.on('disconnect', () => {
-        console.log('Usuario desconectado');
-    });
+  socket.on('set username', (username) => {
+    socketToUsername[socket.id] = username;
+    io.emit('user joined', { userId: socket.id, username });
+  });
+
+  socket.on('chat message', (msg) => {
+    io.emit('chat message', { userId: socket.id, username: socketToUsername[socket.id], msg });
+  });
+
+  socket.on('disconnect', () => {
+    console.log('Usuario desconectado');
+    const username = socketToUsername[socket.id];
+    delete socketToUsername[socket.id];
+    io.emit('user disconnected', { userId: socket.id, username });
+  });
 });
+
+
 
 app.use(session({
     secret: 'secretsoftware',
